@@ -12,6 +12,8 @@
 # /etc/init.d/poll
 
 # To activate:
+#   cd /etc/init.d
+#   sudo ln -s ~/pi-doorbell/init-poll poll
 #   sudo update-rc.d poll defaults
 #
 

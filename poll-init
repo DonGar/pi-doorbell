@@ -1,13 +1,19 @@
-#!/bin/bash
-# poll daemon
-# chkconfig: 345 20 80
-# description: poll daemon
-# processname: poll
+### BEGIN INIT INFO
+# Provides: GPIO Polling with web reporting
+# Required-Start: $remote_fs $syslog
+# Required-Stop: $remote_fs $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: GPIO Polling
+# Description: GPIO Polling with reporting to house-monitor
+### END INIT INFO
 
-DAEMON_PATH="/home/pi/pi-doorbell/"
+#! /bin/sh
+# /etc/init.d/poll
+
+DAEMON_PATH="/home/pi/pi-doorbell"
 
 DAEMON=poll.py
-DAEMONOPTS=""
 
 NAME=poll
 DESC="My daemon description"
@@ -18,8 +24,7 @@ case "$1" in
 start)
 	printf "%-50s" "Starting $NAME..."
 	cd $DAEMON_PATH
-	PID=`$DAEMON $DAEMONOPTS > /dev/null 2>&1 & echo $!`
-	#echo "Saving PID" $PID " to " $PIDFILE
+	PID=`./$DAEMON > /dev/null 2>&1 & echo $!`
         if [ -z $PID ]; then
             printf "%s\n" "Fail"
         else

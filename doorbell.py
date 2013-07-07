@@ -13,7 +13,7 @@ BELL = 11  # GPIO 17
 # We only send an external notification if there wasn't a button press for
 # at least this many seconds.
 NOTIFY_DELAY = 30
-NOTIFY_URL= 'http://www:8080/button?id=doorbell'
+NOTIFY_URL= 'http://www:8080/button/doorbell'
 
 def notify():
   """Perform an external notify by opening a URL.
